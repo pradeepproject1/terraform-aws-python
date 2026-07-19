@@ -110,7 +110,7 @@ data "archive_file" "stop_ec2" {
 resource "aws_cloudwatch_event_rule" "start_ec2" {
   name                = "${var.instance_name}-start-ec2"
   description         = "Trigger Lambda to start EC2 at 6:45 PM IST (13:15 UTC) daily"
-  schedule_expression = "cron(15 13 * * ? *)"
+  schedule_expression = "cron(20 13 * * ? *)"
   state               = "ENABLED"
 }
 
@@ -118,7 +118,7 @@ resource "aws_cloudwatch_event_rule" "start_ec2" {
 resource "aws_cloudwatch_event_rule" "stop_ec2" {
   name                = "${var.instance_name}-stop-ec2"
   description         = "Trigger Lambda to stop EC2 at 6:40 PM IST (13:10 UTC) daily"
-  schedule_expression = "cron(10 13 * * ? *)"
+  schedule_expression = "cron(15 13 * * ? *)"
   state               = "ENABLED"
 }
 
