@@ -1,24 +1,22 @@
 import os
-import subprocess
 import boto3
 
 
-def get_instance_id():
-    terraform_dir = os.path.dirname(os.path.abspath(__file__))
-    result = subprocess.run(
-        ["terraform", "output", "-raw", "instance_id"],
-        cwd=terraform_dir,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    return result.stdout.strip()
+def lambda_handler(event=None, context=None):
+    instance_id = (event or {}).get("instance_id") or os.environ.get("EC2_INSTANCE_ID")
+    if not instance_id:
+        raise ValueError("EC2_INSTANCE_ID environment variable is not set")
+
+    ec2 = boto3.client("ec2")
+    response = ec2.stop_instances(InstanceIds=[instance_id])
+
+    print(f"Stopping EC2 instance {instance_id}")
+    return {
+        "statusCode": 200,
+        "body": f"Stopped EC2 instance {instance_id}",
+        "response": response,
+    }
 
 
-instance_id = get_instance_id()
-ec2 = boto3.client("ec2")
-
-response = ec2.stop_instances(InstanceIds=[instance_id])
-
-print("Stopping EC2...")
-print(response)
+if __name__ == "__main__":
+    lambda_handler()
