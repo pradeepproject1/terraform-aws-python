@@ -18,7 +18,7 @@ variable "instance_type" {
 variable "instance_name" {
   description = "Name tag for the EC2 instance"
   type        = string
-  default     = "Python-Terraform-EC2"
+  default     = "web-request-instance"
 }
 
 variable "tags" {
