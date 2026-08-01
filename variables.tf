@@ -4,25 +4,26 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "ami_id" {
-  description = "AMI ID for EC2"
+variable "cluster_name" {
+  description = "EKS Cluster Name"
   type        = string
+  default     = "flask-eks-cluster"
 }
 
-variable "instance_type" {
-  description = "EC2 Instance Type"
+variable "app_name" {
+  description = "Application name (used for ECR repo and k8s resources)"
   type        = string
-  default     = "t2.micro"
+  default     = "flask-app"
 }
 
-variable "instance_name" {
-  description = "Name tag for the EC2 instance"
+variable "node_instance_type" {
+  description = "EC2 instance type for EKS nodes"
   type        = string
-  default     = "web-request-instance"
+  default     = "t3.medium"
 }
 
-variable "tags" {
-  description = "Additional tags for the EC2 instance"
-  type        = map(string)
-  default     = {}
+variable "app_image_tag" {
+  description = "Docker image tag to deploy"
+  type        = string
+  default     = "latest"
 }
