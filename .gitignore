@@ -1,10 +1,10 @@
 # Terraform
 .terraform/
-.terraform.lock.hcl
 *.tfstate
-*.tfstate.backup
-*.tfvars
-*.tfvars.json
+*.tfvas
+*.tfplan
+*.tfplan.*
+
 crash.log
 override.tf
 override.tf.json
@@ -15,6 +15,7 @@ override.tf.json
 __pycache__/
 *.py[cod]
 *.pyo
+*.pyc
 *.pyd
 .env
 .venv/
