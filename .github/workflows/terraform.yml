@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  TF_WORKING_DIR: aws-glue-pyspark-etl
+  TF_WORKING_DIR: ./aws-glue-pyspark-etl
 
 jobs:
   terraform:
