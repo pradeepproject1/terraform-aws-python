@@ -8,17 +8,10 @@ on:
     branches:
       - main
 
-env:
-  TF_WORKING_DIR: ./aws-glue-pyspark-etl
-
 jobs:
   terraform:
     name: Terraform Plan & Apply
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ${{ env.TF_WORKING_DIR }}
 
     steps:
       - name: Checkout Code
