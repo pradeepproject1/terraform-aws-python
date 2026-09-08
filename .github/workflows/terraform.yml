@@ -4,16 +4,12 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'aws-glue-pyspark-etl/**'
   pull_request:
     branches:
       - main
-    paths:
-      - 'aws-glue-pyspark-etl/**'
 
 env:
-  TF_WORKING_DIR: aws-glue-pyspark-etl
+  TF_WORKING_DIR: ./aws-glue-pyspark-etl
 
 jobs:
   terraform:
